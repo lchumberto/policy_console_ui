@@ -1,0 +1,24 @@
+{
+  "extends": [
+    "tslint:recommended",
+    "tslint-react",
+    "tslint-config-prettier",
+    "tslint-config-airbnb"
+  ],
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**/*.ts"
+    ]
+  },
+  "rules": {
+    "import-name": false,
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format", "allow-pascal-case"
+    ],
+    "only-arrow-functions": [true, "allow-named-functions"],
+    "jsx-boolean-value": [true, "never"],
+    "max-line-length": [true, 80]
+  }
+}
