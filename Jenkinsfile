@@ -13,12 +13,14 @@ stages{
         stage('Init'){
             steps {
                 echo "Testing..."
+                sh "ls -al"
             }
         }
     
         stage('Build'){
             steps {
-                sh 'source /etc/profile.d/maven.sh && mvn clean package'
+            //    sh 'source /etc/profile.d/maven.sh && mvn clean package'
+                sh 'docker build -t bluecedar/policy_console_ui:0.1.0 .'
             }
             //post {
             //  success {
