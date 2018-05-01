@@ -1,6 +1,6 @@
 #!/bin/sh +x
 
-npm install
+npm install --production
 
 if [ "${ENVIRONMENT}" != "production" ] ; then
   npm run lint
