@@ -20,8 +20,10 @@ stages{
         stage('Build'){
             steps {
             //    sh 'source /etc/profile.d/maven.sh && mvn clean package'
-                sh 'docker run --rm -v "$PWD":/usr/app -w /usr/app bluecedarnetworks/node:8 ./build.sh || exit 1'
+                sh 'docker run --rm -v "$PWD":/usr/app -w /usr/app bluecedarnetworks/node:8 npm build || exit 1'
                 //sh 'docker build -t bluecedar/policy_console_ui:0.1.0 .'
+                sh 'docker rmi node:8'
+                sh 'docker rmi bluecedarnetworks/node:8'
             }
             //post {
             //  success {
