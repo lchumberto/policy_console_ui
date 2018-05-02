@@ -26,15 +26,21 @@ stages{
             //    sh 'source /etc/profile.d/maven.sh && mvn clean package'
                 sh 'pwd && ls -al'
                 sh './build.sh || exit 1'
-                sh 'docker build -t bluecedar/policy_console_ui:0.1.0 . || exit 1'
+                //sh 'docker build -t bluecedar/policy_console_ui:0.1.0 . || exit 1'
+                //sh 'docker rmi node:8 || exit 0'
+                //sh 'docker push bluecedar/policy_console_ui:0.1.0'
+                //sh 'docker rmi bluecedar/policy_console_ui:0.1.0'
 
-                sh 'docker rmi node:8 || exit 0'
-                sh 'docker push bluecedar/policy_console_ui:0.1.0'
-                sh 'docker rmi bluecedar/policy_console_ui:0.1.0'
-
+                // Build and push image with Jenkins' docker-plugin
+                withDockerRegistry([credentialsId: 'DockerHub-Credentials', url: "https://registry.hub.docker.com"]) {
+                  // we give the image the same version as the .war package
+                  def image = docker.build("bluecedar/policy_console_ui:0.1.0", ".")
+                  image.push()
+                }   
+¡
 
                 //docker.build("bluecedar/policy_console_ui")
-                //docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                //docker.withRegistry('https://registry.hub.docker.com', 'DockerHub-Credentials') {
                 //    app.push("test")
                 //    //app.push("latest")
                 //}
