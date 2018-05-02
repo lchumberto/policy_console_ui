@@ -20,19 +20,20 @@ stages{
     
         stage('Build'){
 
-            docker.build("bluecedar/policy_console_ui")
 
             steps {
 
-            ////    sh 'source /etc/profile.d/maven.sh && mvn clean package'
-            //    sh 'pwd && ls -al'
-            //    sh './build.sh || exit 1'
-            //    sh 'docker build -t bluecedar/policy_console_ui:0.1.0 . || exit 1'
-            //    sh 'docker rmi node:8 || exit 0'
-            //    //sh 'docker rmi bluecedarnetworks/node:8 || exit 0'
-            //    sh 'pwd && ls -al'
+            //    sh 'source /etc/profile.d/maven.sh && mvn clean package'
+                sh 'pwd && ls -al'
+                sh './build.sh || exit 1'
+                sh 'docker build -t bluecedar/policy_console_ui:0.1.0 . || exit 1'
+
+                sh 'docker rmi node:8 || exit 0'
+                sh 'docker push bluecedar/policy_console_ui:0.1.0'
+                sh 'docker rmi bluecedar/policy_console_ui:0.1.0'
 
 
+                //docker.build("bluecedar/policy_console_ui")
                 //docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
                 //    app.push("test")
                 //    //app.push("latest")
