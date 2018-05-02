@@ -36,6 +36,8 @@ stages{
                   // we give the image the same version as the .war package
                   //def image = docker.build("bluecedar/policy_console_ui:0.1.0", ".")
                   //image.push()
+
+                  sh 'docker push bluecedar/policy_console_ui:0.1.0'
                 }
 
                 //docker.build("bluecedar/policy_console_ui")
