@@ -11,8 +11,6 @@ pipeline {
     }*/
 
 stages{
-        def app
-
         stage('Init'){
             steps {
                 echo "Testing..."
@@ -22,6 +20,7 @@ stages{
     
         stage('Build'){
             steps {
+
             ////    sh 'source /etc/profile.d/maven.sh && mvn clean package'
             //    sh 'pwd && ls -al'
             //    sh './build.sh || exit 1'
@@ -30,7 +29,7 @@ stages{
             //    //sh 'docker rmi bluecedarnetworks/node:8 || exit 0'
             //    sh 'pwd && ls -al'
 
-                app = docker.build("bluecedar/policy_console_ui")
+                def app = docker.build("bluecedar/policy_console_ui")
 
                 docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
                     app.push("test")
