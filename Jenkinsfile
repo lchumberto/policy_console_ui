@@ -36,8 +36,7 @@ stages{
                   // we give the image the same version as the .war package
                   def image = docker.build("bluecedar/policy_console_ui:0.1.0", ".")
                   image.push()
-                }   
-¡
+                }
 
                 //docker.build("bluecedar/policy_console_ui")
                 //docker.withRegistry('https://registry.hub.docker.com', 'DockerHub-Credentials') {
