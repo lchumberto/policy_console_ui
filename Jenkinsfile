@@ -29,12 +29,12 @@ stages{
             //    //sh 'docker rmi bluecedarnetworks/node:8 || exit 0'
             //    sh 'pwd && ls -al'
 
-                def app = docker.build("bluecedar/policy_console_ui")
+                docker.build("bluecedar/policy_console_ui")
 
-                docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                    app.push("test")
-                    //app.push("latest")
-                }
+                //docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                //    app.push("test")
+                //    //app.push("latest")
+                //}
 
 
             }
