@@ -21,4 +21,5 @@ RUN rm -rf /usr/share/nginx/html/*
 
 COPY default.conf /etc/nginx/conf.d/
 
-COPY --from=builder /usr/src/app/build/ /usr/share/nginx/html/
+#COPY --from=builder /usr/src/app/build/ /usr/share/nginx/html/
+COPY ./build/ /usr/share/nginx/html/
