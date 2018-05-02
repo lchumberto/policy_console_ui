@@ -19,6 +19,9 @@ stages{
         }
     
         stage('Build'){
+
+            docker.build("bluecedar/policy_console_ui")
+
             steps {
 
             ////    sh 'source /etc/profile.d/maven.sh && mvn clean package'
@@ -29,7 +32,6 @@ stages{
             //    //sh 'docker rmi bluecedarnetworks/node:8 || exit 0'
             //    sh 'pwd && ls -al'
 
-                docker.build("bluecedar/policy_console_ui")
 
                 //docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
                 //    app.push("test")
@@ -41,7 +43,9 @@ stages{
             //      archiveArtifacts artifacts: '**/target/*.war'
             //  }
             //}
-            
+
+            echo "Building..."
+
             }
         }
 
