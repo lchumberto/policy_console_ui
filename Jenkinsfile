@@ -35,15 +35,14 @@ stages{
                 //    app.push("test")
                 //    //app.push("latest")
                 //}
-
-
-            }
             //post {
             //  success {
             //      echo 'Now Archiving...'
             //      archiveArtifacts artifacts: '**/target/*.war'
             //  }
             //}
+            
+            }
         }
 
         stage ('Deploy'){
