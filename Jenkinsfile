@@ -32,7 +32,7 @@ stages{
                 //sh 'docker rmi bluecedar/policy_console_ui:0.1.0'
 
                 // Build and push image with Jenkins' docker-plugin
-                withDockerRegistry([credentialsId: 'DockerHub-Credentials', url: "https://registry.hub.docker.com"]) {
+                withDockerRegistry([credentialsId: 'DockerHub-Credentials', url: "https://index.docker.io/v1/"]) {
                   // we give the image the same version as the .war package
                   //def image = docker.build("bluecedar/policy_console_ui:0.1.0", ".")
                   //image.push()
