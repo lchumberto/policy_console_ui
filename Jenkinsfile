@@ -1,4 +1,5 @@
 pipeline {
+
     agent { label 'swarm' }
     
     /*parameters { 
@@ -10,6 +11,8 @@ pipeline {
     }*/
 
 stages{
+        def app
+
         stage('Init'){
             steps {
                 echo "Testing..."
@@ -27,7 +30,7 @@ stages{
             //    //sh 'docker rmi bluecedarnetworks/node:8 || exit 0'
             //    sh 'pwd && ls -al'
 
-                app = docker.build("bluecedar/policy_console_ui:0.1.0")
+                app = docker.build("bluecedar/policy_console_ui")
 
                 docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
                     app.push("test")
