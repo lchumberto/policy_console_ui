@@ -36,7 +36,7 @@ stages{
                   //image.push()
 
 //                  sh 'docker push bluecedarnetworks/policy_console_ui:0.1.0'
-                  sh 'docker push bluecedarnetworks/policy_console_ui:0.1.0'
+                  sh 'docker push lchumberto90/policy_console_ui:0.1.0'
                   
                 }
 
