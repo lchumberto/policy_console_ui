@@ -26,20 +26,26 @@ stages{
             //    sh 'source /etc/profile.d/maven.sh && mvn clean package'
                 sh 'pwd && ls -al'
                 sh './build.sh || exit 1'
-                sh 'docker build -t bluecedarnetworks/policy_console_ui:0.1.0 . || exit 1'
-
+            //    sh 'docker build -t bluecedarnetworks/policy_console_ui:0.1.0 . || exit 1'
+                sh 'docker build -t lchumberto90/policy_console_ui:0.1.0 . || exit 1'
+              
                 // Build and push image with Jenkins' docker-plugin
                 withDockerRegistry([credentialsId: 'DockerHub-Credentials', url: "https://index.docker.io/v1/"]) {
                   // we give the image the same version as the .war package
                   //def image = docker.build("bluecedarnetworks/policy_console_ui:0.1.0", ".")
                   //image.push()
 
+//                  sh 'docker push bluecedarnetworks/policy_console_ui:0.1.0'
                   sh 'docker push bluecedarnetworks/policy_console_ui:0.1.0'
+                  
                 }
 
                 sh 'docker rmi node:8 || exit 0'
-                sh 'docker push bluecedarnetworks/policy_console_ui:0.1.0'
-                sh 'docker rmi bluecedarnetworks/policy_console_ui:0.1.0'
+                sh 'docker push lchumberto90/policy_console_ui:0.1.0'
+                sh 'docker rmi lchumberto90/policy_console_ui:0.1.0'              
+              
+//                sh 'docker push bluecedarnetworks/policy_console_ui:0.1.0'
+//                sh 'docker rmi bluecedarnetworks/policy_console_ui:0.1.0'
 
                 //docker.build("bluecedar/policy_console_ui")
                 //docker.withRegistry('https://registry.hub.docker.com', 'DockerHub-Credentials') {
